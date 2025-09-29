@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Cuaderno</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+  <style>
+    body, html { margin: 0; height: 100%; }
+    canvas { 
+      display: block; 
+      width: 100%; 
+      height: 100%; 
+      background: url("paper.png"); 
+      touch-action: none; /* evita scroll al dibujar */
+    }
+    .toolbar {
+      position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%);
+      background: rgba(255,255,255,0.9); padding: 8px 12px; border-radius: 12px;
+      display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    button {
+      padding: 6px 10px; border-radius: 6px; border: 1px solid #ccc; background: #fff;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="pad"></canvas>
+  <div class="toolbar">
+    <button onclick="setColor('black')">⚫ Negro</button>
+    <button onclick="setColor('blue')">🔵 Azul</button>
+    <button onclick="setColor('red')">🔴 Rojo</button>
+    <button onclick="setColor('green')">🟢 Verde</button>
+    <button onclick="clearCanvas()">🧹 Limpiar</button>
+    <button onclick="saveImage()">💾 Guardar</button>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
