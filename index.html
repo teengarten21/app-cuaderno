@@ -23,6 +23,51 @@
       position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%);
       background: rgba(255,255,255,0.9); padding: 8px 12px; border-radius: 12px;
       display: flex; gap: 8px; flex-wrap: wrap;
+      z-index: 100;
+    }
+    button {
+      padding: 6px 10px; border-radius: 6px; border: 1px solid #ccc; background: #fff;
+      cursor: pointer;
+    }
+    input[type=range] {
+      width: 100px;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="pad"></canvas>
+
+  <div class="toolbar">
+    <!-- Páginas -->
+    <button onclick="prevPage()">⬅️ Anterior</button>
+    <button onclick="nextPage()">➡️ Siguiente</button>
+
+    <!-- Lápiz y borrador -->
+    <button onclick="setColor('black')">✏️ Negro</button>
+    <button onclick="setColor('blue')">✏️ Azul</button>
+    <button onclick="setEraser()">🩹 Borrador</button>
+
+    <!-- Grosor -->
+    <label>Grosor:</label>
+    <input type="range" min="1" max="20" value="3" oninput="setLineWidth(this.value)">
+
+    <!-- Deshacer/Rehacer -->
+    <button onclick="undo()">↩️ Deshacer</button>
+    <button onclick="redo()">↪️ Rehacer</button>
+
+    <!-- Guardar -->
+    <button onclick="saveImage()">💾 Guardar</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
+    }
+    .toolbar {
+      position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%);
+      background: rgba(255,255,255,0.9); padding: 8px 12px; border-radius: 12px;
+      display: flex; gap: 8px; flex-wrap: wrap;
       <!-- Páginas -->
 <button onclick="prevPage()">⬅️ Anterior</button>
 <button onclick="nextPage()">➡️ Siguiente</button>
@@ -61,4 +106,5 @@
   <script src="app.js"></script>
 </body>
 </html>
+
 
