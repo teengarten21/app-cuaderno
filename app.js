@@ -34,10 +34,8 @@ function showPage(index) {
   document.body.replaceChild(pages[index], canvas);
   canvas = pages[index];
   ctx = canvas.getContext("2d");
-  // Limpiar stacks al cambiar de página
   undoStack = [];
   redoStack = [];
-  // Reasignar eventos
   setupDrawingEvents();
 }
 
@@ -62,17 +60,9 @@ function prevPage() {
 }
 
 // --- Configuración lápiz/borrador ---
-function setColor(c) {
-  color = c;
-}
-
-function setEraser() {
-  color = "#ffffff"; // color de fondo
-}
-
-function setLineWidth(width) {
-  lineWidth = width;
-}
+function setColor(c) { color = c; }
+function setEraser() { color = "#ffffff"; }
+function setLineWidth(width) { lineWidth = width; }
 
 // --- Deshacer y rehacer ---
 function undo() {
@@ -126,9 +116,11 @@ function stopDrawing() {
   if(drawing) {
     drawing = false;
     undoStack.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
-    redoStack = []; // limpiar redo al dibujar
+    redoStack = [];
   }
 }
 
 // --- Inicializar ---
 setupDrawingEvents();
+
+
